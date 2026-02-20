@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentManagementSystem</title>
+    <link rel="stylesheet" href="add.css">
+    
+</head>
+<body>
+    <H1>Student Management System</H1>
+
+        <div class="boxes">
+        <input type="number" name="rno" id="rno" placeholder="Enter Roll Number">
+        <input type="text" name="sname" id="sname" placeholder="Enter Name">
+        <input type="text" name="dept" id="dept" placeholder="Enter Department">
+        <input type="email" name="email" id="email" placeholder="Enter Email">
+        <div class="btn"><button onclick="add()" id="add" class="box">ADD</button>
+       <button id="update" onclick="update()" class="box" >UPDATE</button>
+       <button id="delete" onclick="del()" class="box" >DELETE</button></div>
+       
+    </div>
+    <a id="back" href="dashboard.html"><button>back</button></a>
+     <script>
+        var delstd=document.getElementById("delete");
+        
+       var r= localStorage.getItem("role").toLowerCase();
+       
+       
+        if(r=="teacher"){
+            delstd.style.display="none";
+        }
+    </script>
+    <script type="text/javascript" src="common.js"></script>
+</body>
+</html>

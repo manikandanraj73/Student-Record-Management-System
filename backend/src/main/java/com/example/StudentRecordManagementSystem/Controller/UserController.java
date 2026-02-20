@@ -1,0 +1,23 @@
+package com.example.StudentRecordManagementSystem.Controller;
+import com.example.StudentRecordManagementSystem.Service.UserService;
+import com.example.StudentRecordManagementSystem.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
+public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody User user){
+        return userService.login(user);
+
+    }
+}
