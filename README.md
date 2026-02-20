@@ -33,3 +33,6 @@
  - PUT = /students/update
  - DELETE = /students/delete
 
+# Author
+ Manikandan R
+ 
