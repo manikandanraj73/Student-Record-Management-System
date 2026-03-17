@@ -2,7 +2,6 @@ package com.example.StudentRecordManagementSystem.Service;
 
 import com.example.StudentRecordManagementSystem.Repository.UserRepo;
 import com.example.StudentRecordManagementSystem.models.Student;
-import com.example.StudentRecordManagementSystem.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +51,14 @@ public class StudentService {
         if (student == null) {
             return new ResponseEntity<>("Student Not Found", HttpStatus.NOT_FOUND);
         }
-        if(role.equals("admin")){studentRepo.deleteById(studentId);
+        if(role.equals("admin")){
+            studentRepo.deleteById(studentId);
             return new ResponseEntity<>("Deleted",HttpStatus.ACCEPTED);}
         else {return new ResponseEntity<>("Access Denied",HttpStatus.UNAUTHORIZED);}
-    }}
+    }
+
+    public List<Student> showAllStudentByName(String name) {
+        return studentRepo.findByName(name);
+
+    }
+}
