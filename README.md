@@ -13,6 +13,7 @@
     - ADMIN can (Add,Delete,View,Update) 
     - TEACHER can (Add,View,Update) 
     - STUDENT can (View student details) 
+    - Search students via using their name
     - REST APIs
     - Frontend Intergration
 
@@ -35,4 +36,3 @@
 
 # Author
  Manikandan R
- 

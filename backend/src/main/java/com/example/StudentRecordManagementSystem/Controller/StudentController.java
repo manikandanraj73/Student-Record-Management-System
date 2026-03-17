@@ -2,6 +2,7 @@ package com.example.StudentRecordManagementSystem.Controller;
 
 
 import com.example.StudentRecordManagementSystem.dto.DeleteRequest;
+import com.example.StudentRecordManagementSystem.dto.SearchName;
 import com.example.StudentRecordManagementSystem.dto.UpdateRequest;
 import com.example.StudentRecordManagementSystem.models.User;
 import com.example.StudentRecordManagementSystem.models.Student;
@@ -23,6 +24,10 @@ public class StudentController {
     @GetMapping("/students")
     public List<Student> showAllStudent(){
        return studentService.ShowAllStudent();
+    }
+    @PostMapping("/students/name")
+    public List<Student>showAllStudentByName(@RequestBody SearchName searchName){
+        return studentService.showAllStudentByName(searchName.getSname());
     }
     @PostMapping("/students")
     public String addStudent(@RequestBody Student student){

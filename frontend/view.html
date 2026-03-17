@@ -23,23 +23,47 @@ table{
 
     text-align: center;
    
-    margin: 10px auto;
-    margin-top: 50px;
+    margin: 0px auto;
+   
     padding: 5px 10px;
     font-size: 25px;
+    
     color:aliceblue;
   
 }
-
+#back{   display:block;}
 #back button{
    width: 100px;
    padding: 10px 10px;
+
    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    font-size: 20px;
    background-color: rgb(8, 48, 60);
    border-radius: 8px;
    color: whitesmoke;
     
+}
+.searchbar{
+    display: flex;
+    justify-content: flex-end;
+}
+tbody{
+   
+    overflow: auto;
+
+}
+.Table{
+   height: 400px;  
+}
+#ok{
+    background-color: rgb(75, 196, 75);
+    padding: 3px;
+    border:1px solid green;
+}
+#clear{
+    background-color:rgb(211, 114, 114);
+    padding: 3px;
+    border:1px solid red;
 }
 #back{
     margin-left: 48%;
@@ -50,13 +74,26 @@ table{
 </head>
 <body>
  <h1> STUDENT DETAILS</h1>
- <table border="1"><thead><tr><th>RollNo.</th><th>Name</th><th>Department</th><th>Email</th></tr></thead>
-<tbody></tbody>
+<div class="searchbar"><input type="text" name="sname" id="sname" placeholder="Search Name" ><button id="ok" onclick="showTablesByName()">OK</button><button id="clear" onclick="clearSearch()">CLEAR</button></div>
+ <div class="Table"><table border="1"><thead><tr><th>RollNo.</th><th>Name</th><th>Department</th><th>Email</th></tr></thead>
+
+    <tbody></tbody>
 </table>
 <a id="back" href="dashboard.html"><button>back</button></a>
+</div>
+
+
 <script type="text/javascript">
     window.onload=()=>{
         showTables()
+        document.getElementById("clear").style.display="none";
+    }
+    function clearSearch(){
+        var search=document.getElementById("sname");
+        search.value="";
+
+        showTables();
+
     }
 </script>
 

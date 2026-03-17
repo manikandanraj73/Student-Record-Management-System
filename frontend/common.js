@@ -23,22 +23,45 @@ function login(){
         
     }); 
 }
-function showTables(){
+function showTablesByName(){
     var tbody=document.querySelector("tbody")
+    tbody.innerHTML="";
+    fetch ("http://localhost:8080/students/name",{
+     method: "POST",
+        headers: {"content-Type":"application/json"},
+        body: JSON.stringify({
+            sname:sname.value
+        })
+}).then(res=> res.json())
+.then(data=>{
+    renderTables(data);
+})
+document.getElementById("clear").style.display="";
+}
+function showTables(){
+    
+    var tbody=document.querySelector("tbody")
+     tbody.innerHTML="";
     fetch ("http://localhost:8080/students")
     .then(res=>res.json())
     .then(data=>{
-        data.forEach(student => {
+        renderTables(data);
+        
+    })
+    document.getElementById("clear").style.display="none";
+}
+function renderTables(data){
+    let tbody=document.querySelector("tbody");
+    data.forEach(student => {
             var rows=`
         <tr> <td> ${student.rno}</td>
         <td> ${student.sname}</td>
         <td> ${student.dept}</td>
-        <td> ${student.email}</td></tr>
+        <td> ${student.email}</td> </tr>
         `
             tbody.innerHTML+=rows;
         });
-        
-    })
+
 }
 function add(){
     fetch ("http://localhost:8080/students",{
