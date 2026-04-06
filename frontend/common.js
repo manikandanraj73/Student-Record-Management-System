@@ -106,6 +106,30 @@ sname.value="";
 dept.value="";
 email.value="";}
 
+function addUser(){
+    var r=localStorage.getItem("role").toLowerCase();
+    console.log(uname.value);
+     fetch ("http://localhost:8080/addUser",{
+     method: "POST",
+        headers: {"content-Type":"application/json"},
+        body: JSON.stringify({
+            user:{ 
+            username:uname.value,
+            rno:urno.value,
+            password:password.value,
+            role:urole.value},
+            role:r
+        
+        })
+})
+.then(res=> res.text())
+.then(data=>alert(data))
+urno.value="";
+uname.value="";
+password.value="";
+
+}
+
 function del(){var r=localStorage.getItem("role").toLowerCase();
     console.log(r)
     fetch ("http://localhost:8080/students/delete",{
